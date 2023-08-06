@@ -27,15 +27,9 @@ export interface TPCBrokerInputs {
   B: number;
 }
 
-export interface TPCMinimumProducerInputs
-  extends TPCDataStreamInput,
-    TPCThroughputInput,
-    TPCProducerInput {}
+export interface TPCMinimumProducerInputs extends TPCDataStreamInput, TPCThroughputInput, TPCProducerInput {}
 
-export interface TPCMinimumConsumerInputs
-  extends TPCDataStreamInput,
-    TPCThroughputInput,
-    TPCConsumerInput {}
+export interface TPCMinimumConsumerInputs extends TPCDataStreamInput, TPCThroughputInput, TPCConsumerInput {}
 
 export interface TPCAdjustedMinimumProducerInputs
   extends TPCDataStreamInput,
@@ -52,4 +46,3 @@ export interface TPCAdjustedMinimumConsumerInputs
 export type TPCNumberOfPartitionsInputs = TPCAdjustedMinimumProducerInputs & TPCAdjustedMinimumConsumerInputs;
 
 export interface TPCLoadFactorInputs extends TPCThroughputInput, TPCConsumerInput {}
-
