@@ -1,6 +1,6 @@
 {
   "name": "@xeotekofficial/topic-partition-calculator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Tools to calculate the number of partitions you need for your Kafka topic",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
