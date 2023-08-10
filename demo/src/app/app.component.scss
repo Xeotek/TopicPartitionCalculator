@@ -1,0 +1,17 @@
+.app-container {
+  display: grid;
+  gap: 1rem;
+  padding: .25rem;
+}
+
+form {
+  display: grid;
+  gap: .5rem;
+}
+
+label {
+  display: grid;
+  grid-template-columns: 300px 150px;
+}
+
+

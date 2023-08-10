@@ -1,0 +1,25 @@
+<div class="app-container">
+  <h1>Recommended number of partitions calculator</h1>
+  <form [formGroup]="formGroup">
+    <label>
+      Number of brokers
+      <input formControlName="B" type="number" />
+    </label>
+    <label>
+      Producer processing time (milliseconds)
+      <input formControlName="P" type="number" />
+    </label>
+    <label>
+      Consumer processing time (milliseconds)
+      <input formControlName="C" type="number" />
+    </label>
+    <label>
+      Desired throughput (messages per second)
+      <input formControlName="T" type="number" />
+    </label>
+  </form>
+
+  <div [innerHTML]="results$ | async" class="results">
+
+  </div>
+</div>
