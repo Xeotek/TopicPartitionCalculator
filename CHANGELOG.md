@@ -2,6 +2,7 @@
 
 ## [0.1.2] (15.08.2023)
 
+- Added linter
 - Added changelog guide
 - Updated interfaces to make it easier to see members in editor
 - Updated index file to only export public functions and interfaces
