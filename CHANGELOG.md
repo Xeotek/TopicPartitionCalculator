@@ -1,4 +1,4 @@
-# Monaco Editor Changelog
+# Topic Partition Calculator Changelog
 
 ## [0.1.2] (15.08.2023)
 
