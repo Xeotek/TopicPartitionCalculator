@@ -1,6 +1,6 @@
 {
   "name": "@xeotekofficial/topic-partition-calculator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Tools to calculate the number of partitions you need for your Kafka topic",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -13,7 +13,7 @@
     "postversion": "git push && git push --tags",
     "prepare": "npm run build",
     "version": "npm run format && git add -A src",
-    "test": "ts-jest"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "streams"
   ],
   "author": "Xeotek",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Xeotek/TopicPartitionCalculator/issues"
   },
