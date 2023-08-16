@@ -1,3 +1,8 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Xeotek GmbH. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
 import {
   TPCAdjustedMinimumConsumerInputs,
   TPCAdjustedMinimumProducerInputs,
@@ -5,7 +10,7 @@ import {
   TPCMinimumConsumerInputs,
   TPCMinimumProducerInputs,
   TPCNumberOfPartitionsInputs
-} from "./topic-partition-calculator.models";
+} from './topic-partition-calculator.models';
 
 /**
  * - Minimum number of producers to achieve T
@@ -38,7 +43,7 @@ export function calculateAdjustedMinimumProducerCount({
   B
 }: TPCAdjustedMinimumProducerInputs): number {
   const MP = calculateMinimumProducerCount({ T, P, L, F });
-  /** MC / L / F -> RMP’*/
+  /** MC / L / F -> RMP’ */
   const MPPrime = Math.ceil(MP / L / F);
 
   if (MPPrime >= B) {
@@ -73,7 +78,7 @@ export function calculateLoadFactor({ T, C }: TPCLoadFactorInputs): number {
 /**
  * - Number of partition on the topic
  * */
-export function calculatePartitionForTopicCount({ T, P, C, L, F, B }: TPCNumberOfPartitionsInputs) {
+export function calculatePartitionForTopicCount({ T, P, C, L, F, B }: TPCNumberOfPartitionsInputs): number {
   const RMP = calculateAdjustedMinimumProducerCount({ T, P, L, F, B });
 
   const RMC = calculateAdjustedMinimumConsumerCount({ T, C, L, F, B });
@@ -94,7 +99,14 @@ export function calculatePartitionForTopicCount({ T, P, C, L, F, B }: TPCNumberO
   return min;
 }
 
-export function calculateRecommendedNumberOfPartitions({ T, P, L = 0.8, F = 0.99, B, C }: TPCNumberOfPartitionsInputs) {
+export function calculateRecommendedNumberOfPartitions({
+  T,
+  P,
+  L = 0.8,
+  F = 0.99,
+  B,
+  C
+}: TPCNumberOfPartitionsInputs): number {
   /** mod(max(RMP, NP), min(RMP, NP)) */
   const RMP = calculateAdjustedMinimumProducerCount({ T, P, L, F, B });
   const NP = calculatePartitionForTopicCount({ T, P, C, L, F, B });
@@ -102,7 +114,14 @@ export function calculateRecommendedNumberOfPartitions({ T, P, L = 0.8, F = 0.99
   return result === 0 ? RMP : NP;
 }
 
-export function calculateRecommendedNumberOfConsumers({ T, P, L = 0.8, F = 0.99, B, C }: TPCNumberOfPartitionsInputs) {
+export function calculateRecommendedNumberOfConsumers({
+  T,
+  P,
+  L = 0.8,
+  F = 0.99,
+  B,
+  C
+}: TPCNumberOfPartitionsInputs): number {
   /** mod(max(RMP, NP), min(RMP, NP)) */
   const RMC = calculateAdjustedMinimumConsumerCount({ T, C, L, F, B });
   const NP = calculatePartitionForTopicCount({ T, P, C, L, F, B });

@@ -1,0 +1,14 @@
+name: Code changes pushed
+run-name: ${{ github.actor }} is testing changes
+on: [push]
+jobs:
+  Testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run unit tests
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - run: npm install jest ts-jest
+      - run: npm test

@@ -1,0 +1,19 @@
+name: Releasing library updates
+run-name: ${{ github.actor }} is releasing updates
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Releasing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build library
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - run: npm i typescript
+      - run: npm build
+      - name: NPM Publish
+        uses: JS-DevTools/npm-publish@v2.2.1
